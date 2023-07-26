@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="app.js"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <title>invitacion Código QR</title>
+</head>
+<body>
+  <h2>invitacion</h2>
+  <form id="qrForm">
+            <label for="anfitrion">Anfitrión:</label>
+            <input type="text" id="anfitrion" required>
+            <br>
+            
+            <label for="invitado">Invitado:</label>
+            <input type="text" id="invitado" required>
+            <br>
+    
+            <label for="mesa">Número de Mesa:</label>
+            <input type="number" id="numeroMesa" required>
+            <br>
+
+            <label for="invitados">invitados:</label>
+            <input type="number" id="invitados" required>
+            <br>
+
+            <div id="alerta" class="text-alerta" style="color: red;"></div>
+            <div id="notDown" class="text-alerta" style="color: red;"></div>
+    
+          
+    <button type="button" onclick="generateQRCode()">Generar Código QR</button>
+    <button type="button" onclick="downloadQRCode()">Descargar Código QR</button>
+  </form>
+
+  <div id="qrcode"></div>
+
+
+  
+ <!--esto es solo el codigo base-->
+ <!-- <script>
+
+  let qrCodeInstance;
+
+  function generateQRCode() {
+    var anfitrion = document.getElementById('anfitrion').value;
+    var invitado = document.getElementById('invitado').value;
+    var numeroMesa = document.getElementById('numeroMesa').value;
+    var data = "Anfitrion: " + anfitrion + "\nInvitado: " + invitado + "\nMesa: " + numeroMesa;
+    
+    var qrCodeDiv = document.getElementById('qrcode');
+    qrCodeDiv.innerHTML = '';
+
+    qrCodeInstance = new QRCode(qrCodeDiv, {
+      text: data,
+      width: 150,
+      height: 150,
+    });
+  }
+
+  function downloadQRCode() {
+    if (qrCodeInstance) {
+      const canvas = qrCodeInstance._el.querySelector('canvas');
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'codigo_qr.png';
+      a.click();
+    } else {
+      alert('Primero genera el Código QR antes de descargarlo.');
+    }
+  }
+</script>
+
+  
+</body>
+</html>
